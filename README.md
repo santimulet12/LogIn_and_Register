@@ -32,10 +32,8 @@ Contiene las funciones principales para el registro, inicio de sesión y verific
 
 Antes de ejecutar el script, configura tus credenciales de correo electrónico y contraseña en un archivo `.env` para proteger la información sensible. Ejemplo de contenido del archivo `.env`:
 
-     ```
      EMAIL="tucorreo@gmail.com"
      PASSWORD="tucontraseña"
-     ```
 
 ## Instrucciones de Uso
 
