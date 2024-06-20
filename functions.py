@@ -1,5 +1,49 @@
-import hashlib,base64,re,os,time,msvcrt
-from manageDB import insertRow,validationLogIn,namePetition
+import hashlib,re,os,time,msvcrt,random
+from manageDB import insertRow,validationLogIn,namePetition,obtainMail
+import smtplib,ssl
+from email.message import EmailMessage
+from dotenv import load_dotenv
+
+def generateCode():
+    nums = '0123456789'
+    verificationCode = ''
+
+    for i in range(6):
+        verificationCode += random.choice(nums)
+
+    return verificationCode
+
+def sendmail(email_reciver):
+
+    # Datos del remitente
+    load_dotenv()
+
+    email_sender = os.getenv('EMAIL')
+
+    password = os.getenv('PASSWORD')
+
+    verificationCode = generateCode()
+
+    # Crear el mensaje
+    body = f'Su codigo de verificación es: {verificationCode}'
+    mensaje = EmailMessage()
+    mensaje['From'] = email_sender
+    mensaje['To'] = email_reciver
+    mensaje['Subject'] = 'Tu código de verificación'
+    mensaje.set_content(body)
+
+    # Configurar el servidor SMTP
+    smtp_servidor = 'smtp.gmail.com'
+    puerto_smtp = 465
+
+    context = ssl.create_default_context()
+    # Iniciar sesión en el servidor SMTP
+    with smtplib.SMTP_SSL(smtp_servidor, puerto_smtp, context=context) as smtp:
+        smtp.login(email_sender,password)
+        smtp.sendmail(email_sender,email_reciver,mensaje.as_string())
+
+    return verificationCode
+
 
 def encode(data):
     hash_object = hashlib.md5(data.encode())
@@ -65,10 +109,22 @@ def logIn():
         passHashed = encode(passwd)
 
         if validationLogIn(user,passHashed):
-            name = namePetition(user)
-            print(f'Bienvenido {name[0]}!')
-            break
+            mail = obtainMail(user,passHashed)
+            verifyCode = sendmail(mail)
+            
+            print('Hemos enviado un código de verificación')
+            code = input('Ingrese su código aquí: ')
+
+            if code == verifyCode:
+                name = namePetition(user)
+                print(f'Bienvenido/a {name[0]}!')
+                break
+            else:
+                print('Código erróneo')
         else:
             print('Usuario o Contraseña Inválido')
             time.sleep(3)
             os.system('cls')
+
+if __name__ == '__main__':
+    pass

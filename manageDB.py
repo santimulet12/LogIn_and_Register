@@ -46,12 +46,12 @@ def validationLogIn(user,passwordHash):
 
     cursor.execute(f'SELECT * FROM accounts WHERE user = "{user}" AND password = "{passwordHash}"') #PETICION A LA BASE DE DATOS
 
-    response = cursor.fetchone() #OBTENGO LA RESPUESTA
+    us_pass = cursor.fetchone() #OBTENGO LA RESPUESTA
 
     conection.commit()
     conection.close()
     
-    return response is not None #RETORNA TRUE O FALSE
+    return us_pass is not None #RETORNA TRUE O FALSE
 
 def namePetition(user):
     conection = sql.connect('UserData.db')
@@ -65,6 +65,19 @@ def namePetition(user):
     conection.close()
 
     return response
+
+def obtainMail(user,passwordHash):
+    conection = sql.connect('UserData.db')
+    cursor = conection.cursor()
+
+    cursor.execute(f'SELECT mail FROM accounts WHERE user = "{user}" AND password = "{passwordHash}"')
+
+    mail_reciver = cursor.fetchone()
+
+    conection.commit()
+    conection.close()
+
+    return mail_reciver
 
 if __name__ == '__main__':
     pass
