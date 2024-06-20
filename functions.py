@@ -115,16 +115,17 @@ def logIn():
             print('Hemos enviado un código de verificación')
             code = input('Ingrese su código aquí: ')
 
-            if code == verifyCode:
-                name = namePetition(user)
-                print(f'Bienvenido/a {name[0]}!')
-                break
-            else:
-                print('Código erróneo')
+            while True:
+                if code == verifyCode:
+                    name = namePetition(user)
+                    print(f'Bienvenido/a {name[0]}!')
+                    break
+                else:
+                    print('Código erróneo')
+
+                code = input('Ingrese su código aquí: ')
+            break
         else:
             print('Usuario o Contraseña Inválido')
             time.sleep(3)
             os.system('cls')
-
-if __name__ == '__main__':
-    pass
