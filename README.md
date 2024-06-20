@@ -16,7 +16,7 @@ Gestiona la base de datos SQLite para almacenar información de usuarios.
 - **`namePetition(user)`**: Obtiene el nombre de usuario asociado a un usuario dado.
 - **`obtainMail(user, passwordHash)`**: Obtiene el correo electrónico asociado a un usuario y contraseña dados.
 
-### `main.py`
+### `functions.py`
 
 Contiene las funciones principales para el registro, inicio de sesión y verificación por correo electrónico.
 
