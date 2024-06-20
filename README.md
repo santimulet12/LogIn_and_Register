@@ -42,5 +42,5 @@ Antes de ejecutar el script, configura tus credenciales de correo electrónico y
 3. Instala las dependencias necesarias ejecutando `pip install -r requirements.txt`, donde `requirements.txt` contiene `hashlib`, `re`, `os`, `time`, `msvcrt`, `random`, `smtplib`, `ssl`, y `dotenv`.
 4. Ejecuta `main.py` para probar las funcionalidades de registro, inicio de sesión y verificación por correo electrónico.
 
-¡Disfruta utilizando el sistema de registro y autenticación con verificación por correo electrónico!
+¡Disfrutalo mi rey!
 
