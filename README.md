@@ -37,10 +37,11 @@ Antes de ejecutar el script, configura tus credenciales de correo electrónico y
 
 ## Instrucciones de Uso
 
-1. Clona o descarga el repositorio en tu máquina local.
-2. Configura las variables de entorno `EMAIL` y `PASSWORD` en `.env`.
-3. Instala las dependencias necesarias ejecutando `pip install -r requirements.txt`, donde `requirements.txt` contiene `hashlib`, `re`, `os`, `time`, `msvcrt`, `random`, `smtplib`, `ssl`, y `dotenv`.
-4. Ejecuta `main.py` para probar las funcionalidades de registro, inicio de sesión y verificación por correo electrónico.
+1. Conectate a internet.
+2. Clona o descarga el repositorio en tu máquina local.
+3. Configura las variables de entorno `EMAIL` y `PASSWORD` en `.env`.
+4. Instala las dependencias necesarias ejecutando `pip install -r requirements.txt`, donde `requirements.txt` contiene `hashlib`, `re`, `os`, `time`, `msvcrt`, `random`, `smtplib`, `ssl`, y `dotenv`.
+5. Ejecuta `main.py` para probar las funcionalidades de registro, inicio de sesión y verificación por correo electrónico.
 
 ¡Disfrutalo mi rey!
 
